@@ -91,9 +91,9 @@ const About: React.FC<AboutProps> = ({ communityData }) => {
                   >
                     Change Image
                   </Text>
-                  {communityData.imageUrl || selectedFile ? (
+                  {communityData.imageURL || selectedFile ? (
                     <Image
-                      src={selectedFile || communityData.imageUrl}
+                      src={selectedFile || communityData.imageURL}
                       borderRadius="full"
                       boxSize="40px"
                       alt="Community Image"
