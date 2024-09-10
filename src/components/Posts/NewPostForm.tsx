@@ -69,9 +69,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleCreatePost = async (
-    event: React.ChangeEvent<HTMLElement | HTMLTextAreaElement>
-  ) => {
+  const handleCreatePost = async () => {
     const { communityId } = router.query;
 
     const newPost: Post = {
@@ -87,7 +85,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
     };
 
     setLoading(true);
-    
+
     try {
       const postDocRef = await addDoc(collection(firestore, "posts"), newPost);
       if (selectedFile) {
@@ -106,12 +104,21 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
     setLoading(false);
   };
 
-  const onTextChange = (
-    event: React.ChangeEvent<HTMLElement | HTMLTextAreaElement>
-  ) => {
-    const {
-      target: { name, value },
-    } = event;
+  // const onTextChange = (
+  //   event: React.ChangeEvent<HTMLElement | HTMLTextAreaElement>
+  // ) => {
+  //   const {
+  //     target: { name, value },
+  //   } = event;
+  //   setTextInputs((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
+
+  const onTextChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setTextInputs((prev) => ({
       ...prev,
       [name]: value,
