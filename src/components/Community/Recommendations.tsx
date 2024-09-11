@@ -65,43 +65,54 @@ const Recommendations: React.FC = () => {
           <>
             {posts.map((item) => {
               return (
-                <Link
-                  key={item.id}
-                  href={`/r/${item.communityId}/comments/${item.id}`}
-                >
-                  <Flex
-                    align="center"
-                    direction="column"
-                    fontSize="10pt"
-                    borderBottom="1px solid"
-                    borderColor="gray.400"
-                    p="10px 12px"
+                <>
+                  <Link key={item.id} href={`/r/${item.communityId}`}>
+                    <Flex
+                      align="center"
+                      direction="column"
+                      fontSize="10pt"
+                      fontWeight={700}
+                      p="0px 12px"
+                    >
+                      <Flex width="100%">
+                        <span
+                          style={{
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {item.communityId}
+                        </span>
+                      </Flex>
+                    </Flex>
+                  </Link>
+                  <Link
+                    key={item.id}
+                    href={`/r/${item.communityId}/comments/${item.id}`}
                   >
-                    <Flex width="100%">
-                      <span
-                        style={{
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                      >
-                        {item.title}
-                      </span>
+                    <Flex
+                      align="center"
+                      direction="column"
+                      fontSize="10pt"
+                      borderBottom="1px solid"
+                      borderColor="gray.400"
+                      p="10px 12px"
+                    >
+                      <Flex width="100%">
+                        <span
+                          style={{
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {item.title}
+                        </span>
+                      </Flex>
                     </Flex>
-
-                    <Flex width="100%">
-                      <span
-                        style={{
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                      >
-                        {item.body}
-                      </span>
-                    </Flex>
-                  </Flex>
-                </Link>
+                  </Link>
+                </>
               );
             })}
           </>
